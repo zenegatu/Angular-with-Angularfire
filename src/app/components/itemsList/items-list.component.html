@@ -1,0 +1,40 @@
+<mat-toolbar id="toolbar">
+  <p>My Books</p>
+</mat-toolbar>
+<mat-card>
+  <table [dataSource]="userBooks" mat-table>
+    <ng-container matColumnDef="title">
+      <th *matHeaderCellDef mat-header-cell>Title</th>
+      <td *matCellDef="let book" mat-cell>{{book.title}}</td>
+    </ng-container>
+    <ng-container matColumnDef="order">
+      <th *matHeaderCellDef mat-header-cell></th>
+      <td *matCellDef="let book; let i = index" mat-cell>{{i + 1}}</td>
+    </ng-container>
+    <ng-container matColumnDef="author">
+      <th *matHeaderCellDef mat-header-cell>Author</th>
+      <td *matCellDef="let book" mat-cell>{{book?.author}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th *matHeaderCellDef mat-header-cell><small>Edit</small></th>
+      <td (click)="goToEditPage(book)" *matCellDef="let book" class="edit" mat-cell>
+        <mat-icon class="yellow">edit</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th *matHeaderCellDef mat-header-cell><small>Delete</small></th>
+      <td (click)="deleteBookAndImg(book)" *matCellDef="let book" class="delete" mat-cell>
+        <mat-icon color="warn">delete</mat-icon>
+      </td>
+    </ng-container>
+    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+    <tr *matRowDef="let row; columns:displayedColumns" mat-row></tr>
+
+  </table>
+  <i *ngIf="!hasBooks" id="noBooks">You have not recommended any books yet</i>
+
+</mat-card>
+
+

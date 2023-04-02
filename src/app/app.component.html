@@ -1,0 +1,57 @@
+<div *ngIf="!userName" class="overlay">
+  <div class="center">
+    <mat-spinner id="spinner"></mat-spinner>
+  </div>
+</div>
+<a *ngIf="pageUrl('home')" color="primary" href="https://github.com/zenegatu/Angular15-Angularfire7.git" id="code"
+   mat-button
+   target="_blank">
+  View Code</a>
+<div id="container">
+  <mat-toolbar id="toolbar">
+    <button [matMenuTriggerFor]="menu" mat-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button [disabled]="pageUrl('home')" mat-menu-item routerLink="home">
+        <mat-icon>home</mat-icon>
+        <i>Books</i></button>
+      <button (click)="openLoginPage()" [disabled]="pageUrl('login')" mat-menu-item>
+        <mat-icon>login</mat-icon>
+        <i>Login / Signup</i>
+      </button>
+    </mat-menu>
+    <h3 (click)="goToHome()" *ngIf="!pageUrl('home')" id="page_title">Good Books</h3>
+    <h3 *ngIf="pageUrl('home')" id="page_title2">Good Books</h3>
+    <button [matMenuTriggerFor]="user" mat-button>
+      <div id="user_btn">
+
+        <i id="userName">{{userName}}</i>
+        <mat-icon id="user_icon">person</mat-icon>
+      </div>
+    </button>
+    <mat-menu #user="matMenu">
+      <button [disabled]="pageUrl('list')" mat-menu-item routerLink="list">
+        <mat-icon>list</mat-icon>
+        <i>My Books</i></button>
+      <button (click)="goToEditPage()" [disabled]="pageUrl('editOrAdd')" mat-menu-item>
+        <mat-icon>add</mat-icon>
+        <i>Add New</i>
+      </button>
+      <button (click)="logout()" *ngIf="userName !== 'guest'" mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <i>Logout</i>
+      </button>
+      <button (click)="openLoginPage()" *ngIf="userName == 'guest'" mat-menu-item>
+        <mat-icon>login</mat-icon>
+        <i>Login</i>
+      </button>
+
+    </mat-menu>
+
+  </mat-toolbar>
+
+
+  <router-outlet></router-outlet>
+</div>
+

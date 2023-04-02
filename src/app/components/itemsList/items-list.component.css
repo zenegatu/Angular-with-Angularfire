@@ -1,0 +1,79 @@
+#toolbar {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-column-title,
+.mat-column-author,
+.mat-column-genre,
+.mat-column-description,
+.mat-column-delete,
+.mat-column-edit {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border: 1px solid #222222;
+}
+
+.delete, .edit {
+  cursor: pointer;
+}
+
+.delete:hover {
+  background-color: #533;
+}
+
+.edit:hover {
+  background-color: #550;
+}
+
+
+tr:nth-child(odd) {
+  background-color: #313131;
+}
+
+tr:nth-child(even) {
+
+}
+
+th {
+  background-color: #222;
+  text-align: center;
+}
+
+.mat-column-position.mat-header-cell {
+  text-align: center;
+}
+
+table {
+  border: solid 1px #666;
+}
+
+#grid_display {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  background-color: #444444;
+}
+
+.mat-column-edit, .mat-column-delete, .mat-column-order {
+  width: 1rem;
+  align-content: center;
+}
+
+small {
+  color: #999;
+}
+
+.yellow {
+  color: gold;
+}
+
+#noBooks {
+  text-align: center;
+  color: yellow;
+}

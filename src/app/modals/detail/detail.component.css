@@ -1,0 +1,51 @@
+
+#container {
+  margin-bottom: 2rem;
+}
+
+#detail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  color: #ddd;
+
+}
+
+#description {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-content: center;
+  text-align: center;
+  width: 40%;
+  margin-top: 1rem;;
+}
+
+#description {
+  flex-grow: 1;
+  padding: 1rem;
+}
+
+#description p {
+  overflow-wrap: normal;
+}
+
+#img {
+}
+
+#img img {
+  width: 360px;
+  height: 560px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+#description h3, h4, i {
+  margin: 5px;
+}

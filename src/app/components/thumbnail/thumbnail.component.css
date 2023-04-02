@@ -1,0 +1,19 @@
+#thumbnail {
+  cursor: pointer;
+  text-align: center;
+  width: 200px;
+  color: #ddd;
+  margin: 1rem;
+}
+
+#title, #author, #year {
+  margin: 2px
+}
+
+#img {
+  margin-right: auto;
+  margin-left: auto;
+  object-fit: fill;
+  width: 200px;
+  height: 310px;
+}

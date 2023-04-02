@@ -1,0 +1,72 @@
+<mat-toolbar xmlns="http://www.w3.org/1999/html">{{pageTitle}}</mat-toolbar>
+<mat-card id="container">
+  <mat-card>
+    <p *ngIf="error" class="red">{{error}}</p>
+    <form (ngSubmit)="onSubmit()" [formGroup]="inputForm" id="inputForm" novalidate>
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input formControlName="title" matInput type="text"/>
+        <mat-error *ngIf="inputForm.controls['title'].hasError('minlength')">At least 2 characters</mat-error>
+        <mat-error *ngIf="inputForm.controls['title'].hasError('maxlength')">Not more than 50 characters</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Author</mat-label>
+        <input formControlName="author" id=" author" matInput type="text"/>
+        <mat-error *ngIf="inputForm.controls['author'].hasError('minlength')">At least 2 characters</mat-error>
+        <mat-error *ngIf="inputForm.controls['author'].hasError('maxlength')">Not more than 50 characters</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Genre</mat-label>
+        <mat-select formControlName="genre">
+          <mat-option value="fiction">Fiction</mat-option>
+          <mat-option value="non-fiction">Non-Fiction</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Year</mat-label>
+        <input formControlName="year" id=" year" matInput/>
+        <mat-error *ngIf="inputForm.controls['year'].hasError('pattern')">4 digits year</mat-error>
+        <mat-error *ngIf="inputForm.controls['year'].hasError('max')">Can not be in the future</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea cdkAutosizeMaxRows="5"
+                  cdkAutosizeMinRows="1"
+                  cdkTextareaAutosize
+                  formControlName="description"
+                  matInput></textarea>
+        <mat-error *ngIf="inputForm.controls['description'].hasError('minlength')">At least 50 characters</mat-error>
+        <mat-error *ngIf="inputForm.controls['description'].hasError('maxlength')">Not more than 500 characters
+        </mat-error>
+      </mat-form-field>
+    </form>
+    <mat-card id="attach_form">
+      <p *ngIf="oversize" class="red">{{oversize}}</p>
+      <p class="upload-file-name">{{attachedFilename}} </p>
+      <div class="upload-wrap">
+        <label class="upload-label" for="upload">
+          <input (change)="selectedFile($event)" accept="image/*" id="upload" required type="file">
+          <mat-icon id="attach">attach_file</mat-icon>
+          Attach</label>
+      </div>
+    </mat-card>
+  </mat-card>
+  <mat-card id="img_wrapper">
+    <img alt="preview" id="preview" src="{{preview || record?.imgURL || './assets/images/preview.PNG'}}">
+  </mat-card>
+  <mat-card id="upload_progress">
+    <mat-progress-bar *ngIf="wait" mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar mode="determinate" value="{{uploadProgress}}">{{uploadProgress}}</mat-progress-bar>
+    <strong>{{uploadProgress}} %</strong>
+  </mat-card>
+  <mat-card id="btns">
+    <button [disabled]="isDisabled || !imgFile" color="primary" form="inputForm" mat-raised-button type="submit">
+      <mat-icon>file_upload</mat-icon>
+      {{submitBtnLabel}}</button>
+    <button (click)="closeBtn()" mat-raised-button>
+      <mat-icon>close</mat-icon>
+      Close
+    </button>
+  </mat-card>
+</mat-card>
+

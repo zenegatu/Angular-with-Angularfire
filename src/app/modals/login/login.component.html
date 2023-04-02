@@ -1,0 +1,31 @@
+<mat-toolbar id="toolbar">{{loginPage ? 'LOGIN' : 'SIGN UP'}}
+  <button (click)="onSwitch()" color="accent" mat-button>
+    {{loginPage ? 'switch to: SIGN UP' : 'switch to: LOGIN'}}
+  </button>
+</mat-toolbar>
+
+<mat-card id="formWrapper">
+  <p *ngIf="error" class="red">
+    <mat-icon class="error_icon">error</mat-icon>
+    {{error}}</p>
+  <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" novalidate>
+    <mat-form-field appearance="fill">
+      <mat-label>E-mail</mat-label>
+      <input formControlName="email" matInput type="email" value="{{guest_login?.email}}">
+      <mat-error *ngIf="loginForm.controls.email.hasError('required')">Email is required</mat-error>
+      <mat-error *ngIf="loginForm.controls.email.hasError('email')">Invalid E-mail</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" matInput type="password" value="{{guest_login?.psw}}">
+      <mat-error *ngIf="loginForm.controls.password.hasError('minlength')">At least 6 characters required</mat-error>
+      <mat-error *ngIf="loginForm.controls.password.hasError('maxlength')">Not more than 10 characters allowed
+      </mat-error>
+    </mat-form-field>
+    <button [disabled]="!loginForm.valid" color="primary" mat-raised-button type="submit">
+      {{loggedInUser ? 'Sign Up' : 'Login'}}
+    </button>
+  </form>
+</mat-card>
+
+

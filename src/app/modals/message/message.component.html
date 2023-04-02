@@ -1,0 +1,34 @@
+<mat-dialog-content>
+  <h1 *ngIf="dialogData.result == 'success'">
+    <mat-icon>done</mat-icon>
+  </h1>
+  <h1 *ngIf="dialogData.result == 'warn'">
+    <mat-icon class="red">warning</mat-icon>
+  </h1>
+  <p *ngIf="dialogData.action == 'update'">
+    <strong>{{dialogData.title }}</strong> was successfully updated.
+  </p>
+  <p *ngIf="dialogData.action == 'create'">
+    <strong>{{dialogData.title }}</strong> was successfully added.
+  </p>
+  <p *ngIf="dialogData.action == 'delete'">
+    Are you sure you want to delete: <strong>{{data.title }} ?</strong>
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="onClose()" *ngIf="dialogData.action == 'create' || data.action == 'update'" color="primary"
+          mat-button>
+    <mat-icon>thumb_up_alt</mat-icon>
+    OK
+  </button>
+  <button (click)="onAddNew()" *ngIf="dialogData.action == 'create'" color="accent" mat-button>New
+    <mat-icon>add</mat-icon>
+  </button>
+  <button (click)="onClose()" *ngIf="dialogData.action == 'delete'" color="primary" mat-button>Cancel
+    <mat-icon>close</mat-icon>
+  </button>
+  <button (click)="onDelete()" *ngIf="dialogData.action == 'delete'" color="warn" mat-button>Delete
+    <mat-icon>delete</mat-icon>
+  </button>
+</mat-dialog-actions>
+

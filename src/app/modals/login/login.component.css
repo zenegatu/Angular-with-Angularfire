@@ -1,0 +1,31 @@
+
+#toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+#formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.red {
+  border: 1px solid red;
+  border-radius: 1rem;
+  text-align: center;
+  color: lightcoral;
+}
+
+.error_icon {
+  color: red;
+  vertical-align: bottom;
+  margin-right: 2rem;
+}

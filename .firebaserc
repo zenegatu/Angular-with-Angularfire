@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "fbdb-c2b17"
+  },
+  "targets": {
+    "fbdb-c2b17": {
+      "hosting": {
+        "bookapp": [
+          "fbdb-c2b17"
+        ]
+      }
+    }
+  }
+}

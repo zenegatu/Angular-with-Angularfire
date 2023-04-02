@@ -1,0 +1,23 @@
+<mat-dialog-content id="container">
+  <div id="btn">
+    <a color="primary" href="{{buyLink()}}" mat-button target="_blank">
+      <mat-icon>shop</mat-icon>
+      SHOP</a>
+    <button (click)="onclose()" color="warn" mat-button>
+      <mat-icon>close</mat-icon>
+    </button>
+
+  </div>
+  <div id="detail">
+    <div id="description">
+      <h3>{{thumbnail.title}}</h3>
+      <h4>By {{thumbnail.author}}</h4>
+      <i>{{thumbnail.year}}</i>
+      <p>{{thumbnail.description}}</p>
+    </div>
+    <div id="img">
+      <img alt="image" src="{{data?.imgURL}}"/>
+    </div>
+  </div>
+</mat-dialog-content>
+
